@@ -45,7 +45,14 @@ There are many ways in which you may try to make Sunfish stronger. First you cou
 
 The other way to make Sunfish stronger is to give it more knowledge of chess. The current evaluation function only uses piece square tables - it doesn't even distinguish between midgame and endgame. You can also experiment with more pruning - currently only null move is done - and extensions - currently none are used. Finally Sunfish might benefit from a more advanced move ordering, MVV/LVA and SEE perhaps?
 
+Note: This development version of Sunfish doesn't support UNIX systems.
+Another Note: UCI options are still incomplete(except for `EvalRoughness`, which is fully operational) but it will be fixed soon.
 
+# Building The Executable
+
+On Windows systems, running the batch script(`compile.bat`) will generate the executable binary in a `dist` directory. 
+
+You will need [PyInstaller](https://pypi.org/project/pyinstaller/) installed. After the code has been compiled, the executable will need [`nnueprobe.dll`](https://github.com/dshawul/nnue-probe) and `nn.bin` to be in the same directory.
 
 # Why Sunfish?
 
@@ -56,3 +63,5 @@ In terms of Heritage, Sunfish borrows much more from [Micro-Max by Geert Muller]
 # License
 
 [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.en.html)
+
+
