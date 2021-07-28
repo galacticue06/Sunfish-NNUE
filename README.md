@@ -48,6 +48,12 @@ The other way to make Sunfish stronger is to give it more knowledge of chess. Th
 Note: This development version of Sunfish doesn't support UNIX systems.
 Another Note: UCI options are still incomplete(except for `EvalRoughness`, which is fully operational) but it will be fixed soon.
 
+# What To Expect And What To Not
+
+Average calculation speed of Sunfish-NNUE is around 5 Knps, which is 7 to 10 times lower than the original code. Although, the ELO difference is around 70 at blitz games.
+
+Note: Elo difference may grow depending on the time controls / depth limitations. 
+
 # Building The Executable
 
 On Windows systems, running the batch script(`compile.bat`) will generate the executable binary in a `dist` directory. 
