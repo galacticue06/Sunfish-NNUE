@@ -24,7 +24,7 @@ Because Sunfish is small and strives to be simple, the code provides a great pla
 
 # Run it!
 
-Sunfish is self contained in the `sunfish.py` file from the repository. I DON'T recommend running it with `pypy` or `pypy3` due to slow NN probing of PyPy.
+Sunfish is self contained in the `sunfish.py` file from the repository. I DON'T recommend running it with `pypy` or `pypy3` due to slow NN probing compared to `python`.
 
 You can [play sunfish now on Lichess](https://lichess.org/@/sunfish-engine) (requires log in) or play against [Recursing's Rust port](https://github.com/Recursing/sunfish_rs),
 also [on Lichess](https://lichess.org/@/sunfish_rs), which is about 100 ELO stronger.
