@@ -1,0 +1,1 @@
+set PYTHONOPTIMIZE=2 && pyinstaller -F --add-binary "./nn.bin;nn.bin" --add-data "./nnueprobe.dll;nnueprobe.dll" -i "NONE" --upx-dir . uci.py
