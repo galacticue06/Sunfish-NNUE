@@ -1,4 +1,4 @@
-![Sunfish logo](https://raw.github.com/galacticue06/Sunfish-NNUE/blob/master/logo/sunfish.png)
+![Sunfish logo](https://github.com/galacticue06/Sunfish-NNUE/blob/master/logo/sunfish.png)
 
 ## Introduction
 Sunfish is a simple, but strong chess engine, written in Python, mostly for teaching purposes. Without tables and its simple interface, it takes up just 111 lines of code! (see [`compressed.py`](https://github.com/thomasahle/sunfish/blob/master/compressed.py)) Yet [it plays at ratings above 2000 at Lichess](https://lichess.org/@/sunfish-engine).
