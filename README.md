@@ -52,7 +52,7 @@ Another Note: UCI options are still incomplete(except for `EvalRoughness`, which
 
 Average calculation speed of Sunfish-NNUE is around 5 Knps, which is 7 to 10 times lower than the original code. Although, the ELO difference is around 70 at blitz games.
 
-Note: Elo difference may grow depending on the time controls / depth limitations. 
+Note: ELO difference may grow depending on the time controls / depth limitations. 
 
 # Building The Executable
 
