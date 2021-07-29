@@ -97,7 +97,6 @@ def main():
                         pass
                 if opt == "EvalRoughness" and type(spltd[3]) != str:
                     sunfish.EVAL_ROUGHNESS = spltd[3]
-                    print("yeet")
             
         elif smove.startswith('position'):
             params = smove.split(' ')
