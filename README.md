@@ -56,7 +56,7 @@ Note: Elo difference may grow depending on the time controls / depth limitations
 
 # Building The Executable
 
-On Windows systems, running the batch script(`compile.bat`) will generate the executable binary in a `dist` directory. 
+On Windows systems, running the batch script(`compile.bat`) will generate the executable binary in the `dist` directory. 
 
 You will need [PyInstaller](https://pypi.org/project/pyinstaller/) installed. After the code has been compiled, the executable will need [`nnueprobe.dll`](https://github.com/dshawul/nnue-probe) and `nn.bin` to be in the same directory.
 
