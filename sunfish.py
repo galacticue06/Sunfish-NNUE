@@ -223,17 +223,17 @@ class Position(namedtuple('Position', 'board score wc bc ep kp')):
     def value(self, move):
         i, j = move
         p, q = self.board[i], self.board[j]
-        score = 0
-        for pc in self.board:
-            if pc in pnames:
-                if pc.islower():
-                    score -= piece[pc.upper()]
-                else:
-                    score += piece[pc]
-        else:
-            score = pst[p][j] - pst[p][i]
+        score = pst[p][j] - pst[p][i]
         if q.islower():
             score += pst[q.upper()][119-j]
+        if self.board.count(".")>56:
+            return score*2
+        try:
+            nneval = nnue.nnue_evaluate_fen(bytes(tools.renderFEN(self), encoding='utf-8'))
+            if abs(nneval-score) < NN_LIMIT:
+                return nneval/NN_BASE+score
+        except OSError:
+            pass
         if abs(j-self.kp) < 2:
             score += pst['K'][119-j]
         if p == 'K' and abs(i-j) == 2:
@@ -244,23 +244,14 @@ class Position(namedtuple('Position', 'board score wc bc ep kp')):
                 score += pst['Q'][j] - pst['P'][j]
             if j == self.ep:
                 score += pst['P'][119-(j+S)]
-        if self.board.count(".")>56:
-            return score*2
-##        upboard = "".join(self.board.split())
-##        posW, posB = upboard.find("K"), upboard.find("k")
-##        for i in range(4):
-##            chPosW, chPosB = posW + W_SAFE[i], posB + B_SAFE[i]
-##            if -1 < chPosW < 64:
-##                score += DEFFENDERS[upboard[chPosW]]
-##            if -1 < chPosB < 64:
-##                score += DEFFENDERS[upboard[chPosB]]
-        try:
-            nneval = nnue.nnue_evaluate_fen(bytes(tools.renderFEN(self), encoding='utf-8'))
-            if abs(nneval-score) < NN_LIMIT:
-                return nneval/NN_BASE+score
-                #return (nneval*count + score*(32-count))/NN_BASE
-        except OSError:
-            pass
+        upboard = "".join(self.board.split())
+        posW, posB = upboard.find("K"), upboard.find("k")
+        for i in range(5):
+            chPosW, chPosB = posW + W_SAFE[i], posB + B_SAFE[i]
+            if -1 < chPosW < 64:
+                score += DEFFENDERS[upboard[chPosW]]
+            if -1 < chPosB < 64:
+                score += DEFFENDERS[upboard[chPosB]]
         return score
 
 
@@ -336,6 +327,7 @@ class Searcher:
                     lower = score
                 if score < gamma:
                     upper = score
+                yield depth, self.tp_move.get(pos), self.tp_score.get((pos, depth, True)).lower
             self.bound(pos, lower, depth)
             yield depth, self.tp_move.get(pos), self.tp_score.get((pos, depth, True)).lower
 
