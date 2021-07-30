@@ -246,15 +246,14 @@ class Position(namedtuple('Position', 'board score wc bc ep kp')):
                 score += pst['P'][119-(j+S)]
         if self.board.count(".")>56:
             return score*2
-        upboard = "".join(self.board.split())
-        posW, posB = upboard.find("K"), upboard.find("k")
-        for i in range(4):
-            chPosW, chPosB = posW + W_SAFE[i], posB + B_SAFE[i]
-            if -1 < chPosW < 64:
-                score += DEFFENDERS[upboard[chPosW]]
-            if -1 < chPosB < 64:
-                score += DEFFENDERS[upboard[chPosB]]
-        return score
+##        upboard = "".join(self.board.split())
+##        posW, posB = upboard.find("K"), upboard.find("k")
+##        for i in range(4):
+##            chPosW, chPosB = posW + W_SAFE[i], posB + B_SAFE[i]
+##            if -1 < chPosW < 64:
+##                score += DEFFENDERS[upboard[chPosW]]
+##            if -1 < chPosB < 64:
+##                score += DEFFENDERS[upboard[chPosB]]
         try:
             nneval = nnue.nnue_evaluate_fen(bytes(tools.renderFEN(self), encoding='utf-8'))
             if abs(nneval-score) < NN_LIMIT:
